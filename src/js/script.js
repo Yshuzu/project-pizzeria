@@ -91,6 +91,7 @@ const select = {
     
       thisProduct.accordionTrigger = thisProduct.element.querySelector(select.menuProduct.clickable);
       
+      thisProduct.imageWrapper = thisProduct.element.querySelector(select.menuProduct.imageWrapper);
       thisProduct.form = thisProduct.element.querySelector(select.menuProduct.form);
       thisProduct.formInputs = thisProduct.form.querySelectorAll(select.all.formInputs);
       thisProduct.cartButton = thisProduct.element.querySelector(select.menuProduct.cartButton);
@@ -167,6 +168,23 @@ const select = {
             price += option.price;
           } else if(!optionSelected && option.default){
             price -= option.price;
+          }
+          // find image with class .paramId-optionId
+          const imageSelector = '.' + paramId + '-' + optionId;
+          console.log('imageSelector:', imageSelector);
+          // check if there is an image with class .paramId-optionId
+          const optionImage = thisProduct.imageWrapper.querySelector(imageSelector);
+          console.log('optionImage:', optionImage);
+          // check if the image exists
+          if(optionImage){
+            // check if the option is selected
+            if(optionSelected){
+              // add class active
+              optionImage.classList.add(classNames.menuProduct.imageVisible);
+            } else {
+              // remove class active
+              optionImage.classList.remove(classNames.menuProduct.imageVisible);
+            }
           }
         }
       }
