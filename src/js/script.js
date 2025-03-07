@@ -1,5 +1,8 @@
+import { utils } from './functions.js';
+import { dataSource } from './data.js';
+
 {
-  'use strict';
+ "use strict";
 
   const select = {
     templateOf: {
